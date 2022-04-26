@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="author" content="Sahil Kumar">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>CRUD App</title>
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <!-- Popper JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
+    <!-- Latest compiled JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/bs4/dt-1.10.18/datatables.min.css" />
+
+    <script type="text/javascript" src="https://cdn.datatables.net/v/bs4/dt-1.10.18/datatables.min.js"></script>
+</head>
+
+<body>
+<nav class="navbar navbar-expand-md bg-dark navbar-dark">
+    <!-- Brand -->
+    <a class="navbar-brand" href="#">Pet Store</a>
+    <!-- Toggler/collapsibe Button -->
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <!-- Navbar links -->
+    <div class="collapse navbar-collapse" id="collapsibleNavbar">
+        <ul class="navbar-nav">
+            <li class="nav-item">
+                <a class="nav-link" href="#">Features</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">Product management</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">About</a>
+            </li>
+        </ul>
+    </div>
+    <form class="form-inline" action="">
+        <input class="form-control mr-sm-2" type="text" placeholder="Search">
+        <button class="btn btn-primary" type="submit">Search</button>
+    </form>
+</nav>
+<div class="container-fluid">
+    <div class="row justify-content-center">
+        <div class="col-md-10">
+            <h3 class="text-center text-dark mt-2">App Users</h3>
+            <hr>
+<!--            <div class="alert alert-danger alert-dismissible text-center">-->
+<!--                <button type="button" class="close" data-dismiss="alert">&times;</button>-->
+<!--                <b>Response</b>-->
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <h3 class="text-center text-info">Records Present In The Database</h3>
+            <table class="table table-hover" id="data-table">
+                <thead>
+                <tr>
+                    <th>Username</th>
+                    <th>Password</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:each="user: ${users}">
+                    <td th:text="${user.username}"></td>
+                    <td th:text="${user.user_password}"></td>
+                    <td>
+                        <a href="" class="badge badge-primary p-2">Details</a> |
+                        <a href="" class="badge badge-danger p-2" onclick="">Delete</a> |
+                        <a href="" class="badge badge-success p-2">Edit</a>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+</body>
+</html>

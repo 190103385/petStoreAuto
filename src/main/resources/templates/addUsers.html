@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div class="col-md-6">
+    <h3 class="text-center text-info">Add Record</h3>
+    <form th:action="@{/admin/users}" method="post" enctype="multipart/form-data">
+        <div class="form-group">
+            <input type="text" name="name" value="name" class="form-control" placeholder="Enter name" required>
+        </div>
+        <div class="form-group">
+            <input type="password" name="password" value="password" class="form-control" placeholder="Enter password" required>
+        </div>
+        <div class="form-group">
+            <button type="submit" name="update" class="btn btn-success btn-block">Update</button>
+            <button type="submit" name="add" class="btn btn-primary btn-block">Add</button>
+        </div>
+    </form>
+</div>
+</body>
+</html>
