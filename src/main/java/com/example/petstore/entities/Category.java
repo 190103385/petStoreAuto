@@ -1,6 +1,6 @@
 package com.example.petstore.entities;
 
-import lombok.Data;
+import lombok.*;
 
 import javax.persistence.*;
 
@@ -8,8 +8,8 @@ import java.util.Set;
 
 import static javax.persistence.GenerationType.SEQUENCE;
 
-@Data
 @Entity(name = "category")
+@Table(name = "category")
 public class Category {
     @Id
     @SequenceGenerator(
