@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -362,7 +363,7 @@
                   >
                     <img
                       class="w-100"
-                      src="../../../../../../Desktop/amberhtml-10/amberhtml-10/amber-html-tf-v1.0.0/amber/assets/images/products/large-product/1.png"
+                      th:src="${product.get().getProduct_img()}"
                       alt="Product"
                     />
                   </a>
@@ -511,10 +512,11 @@
 
           <div class="col-lg-7">
             <!-- Product Summery Start -->
-            <div class="product-summery position-relative">
+            <!-- th:object="${product}" -->
+            <div class="product-summery position-relative" th:object="${product}">
               <!-- Product Head Start -->
               <div class="product-head m-b-15">
-                <h2 class="product-title">Single product title</h2>
+                <h2 class="product-title" th:text="${product.get().product_name}"></h2>
               </div>
               <!-- Product Head End -->
 
@@ -530,14 +532,14 @@
 
               <!-- Price Box Start -->
               <div class="price-box m-b-10">
-                <span class="regular-price">$70.00</span>
-                <span class="old-price"><del>$85.00</del></span>
+                $<span class="regular-price" th:text="${product.get().product_discount_price}"></span>
+                $<span class="old-price" th:text="${product.get().product_price}"><del></del></span>
               </div>
               <!-- Price Box End -->
 
               <!-- SKU Start -->
               <div class="sku m-b-15">
-                <span>SKU: 12345</span>
+                <span th:text="${product.get().getProduct_sku()}">SKU: </span>
               </div>
               <!-- SKU End -->
 
@@ -546,18 +548,12 @@
                 <span class="inventroy-title">
                   <strong>Availability:</strong></span
                 >
-                <span class="inventory-varient">12 Left in Stock</span>
+                <span class="inventory-varient">Left in Stock</span>
               </div>
               <!-- Product Inventory End -->
 
               <!-- Description Start -->
-              <p class="desc-content m-b-25">
-                There are many variations of passages of Lorem Ipsum available,
-                but the majority have suffered alteration in some form, by
-                injected humour, or randomised words which don't look even
-                slightly believable. If you are going to use a passage of Lorem
-                Ipsum, you need to be sure there isn't anything embarrassing
-                hidden in the middle of text.
+              <p class="desc-content m-b-25" th:text="${product.get().product_description}">
               </p>
               <!-- Description End -->
 
