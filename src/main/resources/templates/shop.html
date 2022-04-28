@@ -395,7 +395,7 @@
                     </span>
         <div class="action-wrapper">
           <a
-                  href="#/"
+                  th:href="@{/cart.html/addItem/${product.getProduct_id()}/1}"
                   class="action quickview"
                   data-bs-toggle="modal"
                   data-bs-target="#quick-view"
@@ -425,8 +425,11 @@
                       <i class="fa fa-star-o"></i>
                     </span>
         <span class="price">
-                      $<span th:text="${product.product_price}" class="new"></span>
-                      $<span th:text="${product.product_discount_price}" class="old"></span>
+                      <span th:if="${product.getProduct_discount() == 0}" th:text="${product.getProduct_price()}" class="new"></span>
+                      <span th:unless="${product.getProduct_discount() == 0}" th:text="${product.getProduct_discount_price()}" class="new">Discount price</span>
+
+                      <span th:if="${product.getProduct_discount() == 0}" class="old"></span>
+                      $<span th:unless="${product.getProduct_discount() == 0}" th:text="${product.product_price}" class="old"></span>
                     </span>
         <p th:text="${product.product_description}"></p>
         <!-- Cart Button Start -->
@@ -461,11 +464,11 @@
 
 <!-- Shop Wrapper End -->
 
-<script src="../../../../../../Desktop/amberhtml-10/amberhtml-10/amber-html-tf-v1.0.0/amber/assets/js/vendor.min.js"></script>
-<script src="../../../../../../Desktop/amberhtml-10/amberhtml-10/amber-html-tf-v1.0.0/amber/assets/js/plugins.min.js"></script>
+<script th:src="@{/js/vendor.min.js}"></script>
+<script th:src="@{/js/plugins.min.js}"></script>
 
 <!--Main JS-->
-<script src="../../../../../../Desktop/amberhtml-10/amberhtml-10/amber-html-tf-v1.0.0/amber/assets/js/main.js"></script>
+<script th:src="@{/js/main.js}"></script>
 
 </body>
 </html>
