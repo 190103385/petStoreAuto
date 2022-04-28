@@ -35,11 +35,6 @@ public class Index {
         return "my-account.html";
     }
 
-    @GetMapping("/cart.html")
-    public String cart() {
-        return "cart.html";
-    }
-
     @GetMapping("/single-product.html")
     public String single_product() {
         return "single-product.html";

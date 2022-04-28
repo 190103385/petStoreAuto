@@ -2,6 +2,7 @@ package com.example.petstore.security;
 
 import com.example.petstore.entities.Role;
 import com.example.petstore.entities.User;
+import lombok.Getter;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -13,7 +14,7 @@ import java.util.Set;
 
 public class AppUserDetails implements UserDetails {
 
-    private User user;
+    @Getter private User user;
 
     public AppUserDetails(User user){
         this.user = user;
