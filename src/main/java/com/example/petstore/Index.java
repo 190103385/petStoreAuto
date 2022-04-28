@@ -52,10 +52,10 @@ public class Index {
         return "single-product.html";
     }
 
-    @GetMapping("/register.html")
-    public String register() {
-        return "register.html";
-    }
+//    @GetMapping("/register.html")
+//    public String register() {
+//        return "register.html";
+//    }
 
     @GetMapping("/login")
     public String getLoginView(){

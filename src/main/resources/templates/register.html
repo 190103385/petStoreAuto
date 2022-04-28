@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -355,36 +356,46 @@
               <!-- Register Title & Content End -->
 
               <!-- Form Action Start -->
-              <form action="#" method="post">
+              <!-- th:action="@{/register}" th:object="${userData}" th:field="*{firstName}" -->
+              <form th:action="@{/register}" th:object="${userDto}" action="#" method="post">
                 <!-- Input First Name Start -->
                 <div class="single-input-item m-b-10">
-                  <input type="text" placeholder="First Name" />
+                  <input type="text" placeholder="username" th:field="*{username}"/>
+                </div>
+                <div class="single-input-item m-b-10">
+                  <input type="password" placeholder="user_password" th:field="*{user_password}" />
+                </div>
+                <div class="single-input-item m-b-10">
+                  <input type="email" placeholder="email" th:field="*{email}"/>
+                </div>
+                <div class="single-input-item m-b-10">
+                  <input type="text" placeholder="full_name"  th:field="*{full_name}"/>
+                </div>
+                <div class="single-input-item m-b-10">
+                  <input type="text" placeholder="address" th:field="*{address}" />
+                </div>
+                <div class="single-input-item m-b-10">
+                  <input type="text" placeholder="city"  th:field="*{city}"/>
+                </div>
+                <div class="single-input-item m-b-10">
+                  <input type="text" placeholder="country" th:field="*{country}" />
+                </div>
+                <div class="single-input-item m-b-10">
+                  <input type="text" placeholder="phone_number" th:field="*{phone_number}"/>
                 </div>
                 <!-- Input First Name End -->
-
                 <!-- Input Last Name Start -->
-                <div class="single-input-item m-b-10">
-                  <input type="text" placeholder="Last Name" />
-                </div>
                 <!-- Input Last Name End -->
-
                 <!-- Input Email Start -->
-                <div class="single-input-item m-b-10">
-                  <input type="email" placeholder="Email" />
-                </div>
                 <!-- Input Email End -->
-
                 <!-- Input Password Start -->
-                <div class="single-input-item m-b-10">
-                  <input type="password" placeholder="Password" />
-                </div>
                 <!-- Input Password End -->
 
                 <!-- Button/Forget Password Start -->
                 <div class="single-input-item">
                   <div class="login-reg-form-meta m-b-n15">
                     <button
-                      class="btn btn btn-gray-deep btn-hover-primary m-b-15"
+                      class="btn btn btn-gray-deep btn-hover-primary m-b-15" type="submit"
                     >
                       Create
                     </button>

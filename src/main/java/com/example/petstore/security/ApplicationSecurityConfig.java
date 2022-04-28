@@ -26,7 +26,7 @@ public class ApplicationSecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         http.csrf().disable()
                 .authorizeRequests()
-                .antMatchers("/index.html").permitAll()
+                .antMatchers("/index.html", "/shop.html", "/blog-left-sidebar.html", "/about.html", "contact.html", "/register").permitAll()
                 .antMatchers( "/resources/**", "/static/**", "/css/**", "/js/**", "/images/**", "/icon/**", "/fonts/**", "/media/**", "/php/**", "/scss/**").permitAll()
                 .antMatchers("/admin/**").hasAuthority(ADMIN.name())
                 .anyRequest()
