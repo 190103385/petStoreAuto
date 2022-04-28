@@ -1,5 +1,7 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -373,9 +375,8 @@
                     <a href="#account-info" data-bs-toggle="tab"
                       ><i class="fa fa-user"></i> Account Details</a
                     >
-                    <a href="login.html"
-                      ><i class="fa fa-sign-out"></i> Logout</a
-                    >
+                    <a th:href="@{/logout}">
+                      <i class="fa fa-sign-out"></i> Logout</a>
                   </div>
                 </div>
                 <!-- My Account Tab Menu End -->
@@ -393,9 +394,7 @@
                         <h3 class="title">Dashboard</h3>
                         <div class="welcome">
                           <p>
-                            Hello, <strong>Alex Aya</strong> (If Not
-                            <strong>Aya !</strong
-                            ><a href="login.html" class="logout"> Logout</a>)
+                            Hello, <strong>Alex Aya</strong>
                           </p>
                         </div>
                         <p class="mb-0">

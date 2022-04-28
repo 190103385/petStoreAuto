@@ -1,6 +1,6 @@
 package com.example.petstore.entities;
 
-import lombok.*;
+import lombok.Data;
 
 import javax.persistence.*;
 
@@ -10,6 +10,7 @@ import java.util.Set;
 import static javax.persistence.GenerationType.IDENTITY;
 import static javax.persistence.GenerationType.SEQUENCE;
 
+@Data
 @Entity(name = "AppUser")
 @Table(name = "users")
 public class User {
@@ -20,12 +21,19 @@ public class User {
     )
     private Long id;
 
-    @Getter private String username;
-    @Getter private String user_password;
+    private String username;
+    private String user_password;
+    private String fullName;
+    private String email;
+    private String phoneNumber;
+    private String country;
+    private String city;
+    private String address;
+
 
     @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     @JoinTable(name = "users_roles", joinColumns = @JoinColumn (name="user_id"), inverseJoinColumns = @JoinColumn(name = "role_id"))
-    @Getter private Set<Role> roles = new HashSet<>();
+    private Set<Role> roles = new HashSet<>();
 
     @OneToMany(mappedBy = "user", targetEntity = Order.class, cascade = CascadeType.ALL)
     private Set<Order> orders;

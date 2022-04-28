@@ -112,9 +112,6 @@
       spaceBetween: 30,
       slidesPerView: 1,
       effect: 'fade',
-      pagination: true,
-      navigation: true,
-
       // Navigation arrows
       navigation: {
           nextEl: '.hero-slider .home-slider-next',
@@ -132,8 +129,6 @@
       loop: true,
       slidesPerView: 1,
       spaceBetween: 20,
-      pagination: true,
-      navigation: true,
       slideVisibleClass: 'swiper-slide-visible',
       watchSlidesVisibility:true,
 
@@ -256,8 +251,6 @@
       loop: true,
       slidesPerView: 1,
       spaceBetween: 0,
-      pagination: false,
-      navigation: true,
       observer: true,
       observeParents: true,
 
