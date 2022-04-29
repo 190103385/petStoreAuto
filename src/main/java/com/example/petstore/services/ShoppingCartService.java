@@ -6,6 +6,8 @@ import com.example.petstore.entities.User;
 import com.example.petstore.repositories.CartItemRepository;
 import com.example.petstore.repositories.ProductRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -18,29 +20,29 @@ public class ShoppingCartService {
     @Autowired
     private ProductRepository productRepo;
 
+    @Autowired
+    private UserService userService;
+
     public List<CartItem> listCartItems(User user) {
         return cartRepo.findByUser(user);
     }
 
-    public Integer addItemToCart(Integer product_id, Integer quantity, User user) {
-        Integer addedQuantity = quantity;
+    public void clearByUserId(Integer userId) {
+        cartRepo.clearCartByUserId(userId);
+    }
 
-        Product product = productRepo.findById(product_id).get();
-
+    public void save(User user, Product product, Integer quantity) {
+        Integer maxId = cartRepo.getMaxId();
         CartItem cartItem = cartRepo.findByUserAndProduct(user, product);
 
         if(cartItem != null) {
-            addedQuantity = cartItem.getQuantity() + quantity;
-            cartItem.setQuantity(addedQuantity);
-        } else {
-            cartItem = new CartItem();
-            cartItem.setQuantity(quantity);
-            cartItem.setUser(user);
-            cartItem.setProduct(product);
+            int newQuantity = cartItem.getQuantity() + 1;
+            cartItem.setQuantity(newQuantity);
         }
-
+        else {
+            if(maxId == null) cartItem = new CartItem(1, product, user, quantity);
+            else cartItem = new CartItem(maxId+1, product, user, quantity);
+        }
         cartRepo.save(cartItem);
-
-        return addedQuantity;
     }
 }

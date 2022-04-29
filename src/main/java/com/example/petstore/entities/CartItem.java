@@ -1,10 +1,16 @@
 package com.example.petstore.entities;
 
 import lombok.*;
+import org.springframework.data.jpa.repository.Query;
 
 import javax.persistence.*;
 
+import static javax.persistence.GenerationType.SEQUENCE;
+
 @Entity
+@NoArgsConstructor
+@AllArgsConstructor
+@RequiredArgsConstructor
 public class CartItem {
     @Id
     @Column(name = "cart_item_id", nullable = false)
@@ -12,11 +18,11 @@ public class CartItem {
 
     @ManyToOne
     @JoinColumn(name = "product_id")
-    @Getter @Setter private Product product;
+    @NonNull @Getter @Setter private Product product;
 
     @ManyToOne
     @JoinColumn(name = "user_id")
-    @Getter @Setter private User user;
+    @NonNull @Getter @Setter private User user;
 
-    @Getter @Setter private int quantity;
+    @NonNull @Getter @Setter private int quantity;
 }

@@ -19,7 +19,7 @@ public class User {
     @GeneratedValue(
             strategy = IDENTITY
     )
-    private Long id;
+    private int id;
 
     private String username;
     private String user_password;
